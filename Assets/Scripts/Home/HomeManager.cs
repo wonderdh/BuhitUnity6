@@ -111,9 +111,6 @@ public class HomeManager : MonoBehaviour, IBeginDragHandler, IEndDragHandler
             positions[i] = i * step;
         }
 
-        //ssif.printThis();
-        //mapImages = new Sprite[childN];
-
         for (int i = 0; i < childN; i++)
         {
             int index = i; // 로컬 변수를 사용하여 클로저 문제를 해결합니다.
@@ -123,7 +120,6 @@ public class HomeManager : MonoBehaviour, IBeginDragHandler, IEndDragHandler
 
             BtnStationList.Add(childT);
             BtnStationImageList.Add(childT.GetComponent<Image>().sprite);
-            //Debug.Log(childT.name);
 
             Station tmpStation = data.stations.getStation(childT.name);
             

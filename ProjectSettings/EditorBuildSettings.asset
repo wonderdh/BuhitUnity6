@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BusanStation/BusanStationHome.unity
     guid: d7bc7a63026f0204ca08d8b82b9c33dd
+  - enabled: 1
+    path: Assets/Scenes/BusanStation/ChinaTown.unity
+    guid: ca05e45f50fb3994dbf87102771fdfdb
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -51,12 +51,41 @@ namespace DBModels
         public string mapName;
         public int mapNumber;
 
-        public IngameObjects ingameObjects;
+        public IngameObjectList ingameObjectList = new IngameObjectList();
     }
 
     [System.Serializable]
-    public class IngameObjects
+    public class IngameObjectList
     {
-        public List<Object> objects = new List<Object>();
+        public List<IngameObject> ingameObjectList = new List<IngameObject>();
+
+        public int getChecked()
+        {
+            int result = 0; 
+            for (int i = 0; i < ingameObjectList.Count; i++)
+            {
+                if(ingameObjectList[i].objectInfo.isChecked == 1)
+                {
+                    result++;
+                }
+            }
+
+            return result;
+        }
+    }
+
+    [System.Serializable]
+    public class IngameObject
+    {
+        public string id;
+
+        public ObjectInfo objectInfo = new ObjectInfo();
+    }
+
+    [System.Serializable]
+    public class ObjectInfo
+    {
+        public string Description;
+        public int isChecked;
     }
 }

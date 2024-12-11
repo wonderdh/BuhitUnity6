@@ -10,6 +10,7 @@ using System.Runtime.CompilerServices;
 
 using DBModels;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class FirebaseRDBManager : MonoBehaviour
 {
@@ -198,6 +199,45 @@ public class FirebaseRDBManager : MonoBehaviour
                 Debug.LogError("데이터 업데이트 중 오류 발생: " + task.Exception);
             }
         });
+    }
+
+    public async Task<IngameObjectList> GetMapData(String stationName, String mapName)
+    {
+        DatabaseReference mapRef = databaseReference.Child("users").Child(FirebaseAuthManager.Instance.GetCurrentUserId()).Child("Stations").Child(stationName).Child("Maps").Child(mapName).Child("objectCheckList");
+
+        try
+        {
+            var snapshot = await mapRef.GetValueAsync();
+            if (snapshot.Exists)
+            {
+                IngameObjectList ingameObjectList = new IngameObjectList();
+
+                // 스테이션 데이터 가져오기
+                foreach (var ingameObject in snapshot.Children)
+                {
+                    IngameObject tmpIO = new IngameObject();
+
+                    tmpIO.id = ingameObject.Key;
+
+                    string discription = ingameObject.Child("Description").Value?.ToString();
+                    int isCleared = int.Parse(ingameObject.Child("isCleared").Value?.ToString());
+
+                    tmpIO.objectInfo.Description = discription;
+                    tmpIO.objectInfo.isChecked = isCleared;
+
+                    ingameObjectList.ingameObjectList.Add(tmpIO);
+                }
+
+                // 가져온 데이터 활용
+                return ingameObjectList;
+            }
+            return null;
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"데이터 로드 실패: {e.Message}");
+            return null;
+        }
     }
 }
 
