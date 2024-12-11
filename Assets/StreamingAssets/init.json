@@ -1,0 +1,236 @@
+{
+  "Stations": {
+    "BusanStation": {
+      "Maps": {
+        "ChinaTown": {
+          "Station": "BusanStation",
+          "mapId": 0,
+          "objectCheckList": [
+            null,
+            {
+              "Description": "찰칵찰칵! 이건 무조건 찍어야해.",
+              "isCleared": 0
+            },
+            {
+              "Description": "니하오~ 차이나타운에 오신걸 환영해요.",
+              "isCleared": 0
+            },
+            {
+              "Description": "다들 여긴 못올라오지~ 짹짹",
+              "isCleared": 0
+            },
+            {
+              "Description": "살아있는 용처럼 보이겠지?",
+              "isCleared": 0
+            },
+            {
+              "Description": "이곳의 마스코트는 바로 나!",
+              "isCleared": 0
+            },
+            {
+              "Description": "위에서 보니 정말 멋지다!",
+              "isCleared": 0
+            }
+          ]
+        }
+      },
+      "clearedMapCount": 0,
+      "isUnlocked": 1,
+      "totalMapCount": 1,
+      "unlockCamellia": 0,
+      "stationId": 0
+    },
+    "SeomyeonStation": {
+      "Maps": {
+        "SeomyeonUndergroundShoppingDistrict": {
+          "Station": "SeomyeonStation",
+          "mapId": 1,
+          "objectCheckList": [
+            null,
+            {
+              "Description": "도대체 언제 오는거야?",
+              "isCleared": 0
+            },
+            {
+              "Description": "어디 갈지 검색 해보고 가야겠다.",
+              "isCleared": 0
+            },
+            {
+              "Description": "룰루~~ 쇼핑 잘 했다~~",
+              "isCleared": 0
+            },
+            {
+              "Description": "히힛 신난다!! ",
+              "isCleared": 0
+            },
+            {
+              "Description": "어라... 내 인형이 어디갔지?",
+              "isCleared": 0
+            },
+            {
+              "Description": "..... 저 여기 있어요...",
+              "isCleared": 0
+            },
+            {
+              "Description": "(독서 중)",
+              "isCleared": 0
+            },
+            {
+              "Description": "오! 나 쫌 잘 어울리는데?",
+              "isCleared": 0
+            },
+            {
+              "Description": "아~~ 시원하고 편하다~~",
+              "isCleared": 0
+            },
+            {
+              "Description": "문제집 사러 가야지..!",
+              "isCleared": 0
+            }
+          ]
+        }
+      },
+      "clearedMapCount": 0,
+      "isUnlocked": 0,
+      "totalMapCount": 1,
+      "unlockCamellia": 3,
+      "stationId": 0
+    },
+    "HaeundaeStation": {
+      "Maps": {
+        "Haeundae": {
+          "Station": "HaeundaeStation",
+          "mapId": 2,
+          "objectCheckList": [
+            null,
+            {
+              "Description": "감히 대장의 보석을 훔쳐가다니..\n 모두 출동!",
+              "isCleared": 0
+            },
+            {
+              "Description": "쓰레기를 주워야/n 해변가가깨끗해지지.",
+              "isCleared": 0
+            },
+            {
+              "Description": "난 키가 작으니까\n 여기까지가 딱 좋아.",
+              "isCleared": 0
+            },
+            {
+              "Description": "삐--익!! 어이 거기 오뎅!\n 이 물떡님이 다 보고 있다구!",
+              "isCleared": 0
+            },
+            {
+              "Description": "도대체 언제까지 노를 저어야 하는거지..",
+              "isCleared": 0
+            },
+            {
+              "Description": "꾸에엑..소세지어묵꼬치가 되고있어..",
+              "isCleared": 0
+            },
+            {
+              "Description": "안녕! 거긴 어디야??",
+              "isCleared": 0
+            },
+            {
+              "Description": "여기도 있다보니 견딜만 하군.",
+              "isCleared": 0
+            },
+            {
+              "Description": "다들 잡히지 않게 조심해!",
+              "isCleared": 0
+            },
+            {
+              "Description": "역시 누워서 게임하는게\n 제일 행복해.",
+              "isCleared": 0
+            },
+            {
+              "Description": "하나, 둘, 셋.. 서른.\n빨리 내가 살려야해! 하나, 둘, 셋..",
+              "isCleared": 0
+            },
+            {
+              "Description": "여기가 제일 깊은 곳이겠지?",
+              "isCleared": 0
+            },
+            {
+              "Description": "너무 더우니까 그늘에서 쉬어야겠어.",
+              "isCleared": 0
+            }
+          ]
+        }
+      },
+      "clearedMapCount": 0,
+      "isUnlocked": 0,
+      "totalMapCount": 1,
+      "unlockCamellia": 3,
+      "stationId": 0
+    },
+    "BexcoStation": {
+      "Maps": {
+        "Bexco": {
+          "Station": "BexcoStation",
+          "mapId": 3,
+          "objectCheckList": [
+            null,
+            {
+              "Description": "지금부터 인터뷰 시작~~~ 하겠습니다!",
+              "isCleared": 0
+            },
+            {
+              "Description": "어라... 내 이어폰이 어디갔지..?",
+              "isCleared": 0
+            },
+            {
+              "Description": "아주 멋지게 나오겠지?",
+              "isCleared": 0
+            },
+            {
+              "Description": "오... bgm이 좋은데?",
+              "isCleared": 0
+            },
+            {
+              "Description": "이 순간은 꼭 담아야해...!!",
+              "isCleared": 0
+            },
+            {
+              "Description": "흠... 어디부터 가볼까?",
+              "isCleared": 0
+            },
+            {
+              "Description": "줄이 꽤 기네.... 거의 다 왔다.",
+              "isCleared": 0
+            },
+            {
+              "Description": "룰루랄라~~ 개운하다~",
+              "isCleared": 0
+            },
+            {
+              "Description": "나도... 언젠간 저 자리에 설 수 있겠지...?",
+              "isCleared": 0
+            },
+            {
+              "Description": "우와 신기하다!!",
+              "isCleared": 0
+            },
+            {
+              "Description": "어서 와서 체험 해보고 가세요~",
+              "isCleared": 0
+            },
+            {
+              "Description": "내가 한 컨트롤 하지!!",
+              "isCleared": 0
+            }
+          ]
+        }
+      },
+      "clearedMapCount": 0,
+      "isUnlocked": 0,
+      "totalMapCount": 1,
+      "unlockCamellia": 3,
+      "stationId": 0
+    }
+  },
+  "userData": {
+    "camellia": 0,
+    "nickName": ""
+  }
+}

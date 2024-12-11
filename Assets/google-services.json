@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "121782574227",
+    "firebase_url": "https://buhitfinal-8908c-default-rtdb.firebaseio.com",
+    "project_id": "buhitfinal-8908c",
+    "storage_bucket": "buhitfinal-8908c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:121782574227:android:527380dcf347783ee5c166",
+        "android_client_info": {
+          "package_name": "com.hits.buhit"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsorIEm1RDdqsHTcSOPvqxnSJEAa8gvNE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
