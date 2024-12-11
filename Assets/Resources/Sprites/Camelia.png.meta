@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: f27ed5f11a6d21847a6ee5895d55e605
+guid: 54989309b2e76354d979695690b72c7e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8486561651175460363
-    second: BexcoStation_0
-  - first:
-      213: -1672515993479312345
-    second: BexcoStation_1
+      213: 3720327764302802956
+    second: Camelia_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -112,30 +109,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: iOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BexcoStation_0
+      name: Camelia_0
       rect:
         serializedVersion: 2
-        x: 876
-        y: 895
-        width: 6
-        height: 5
+        x: 0
+        y: 23
+        width: 512
+        height: 466
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,30 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b0e04c6abd256c570800000000000000
-      internalID: 8486561651175460363
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BexcoStation_1
-      rect:
-        serializedVersion: 2
-        x: 25
-        y: 14
-        width: 857
-        height: 856
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 72c8187b0970ac8e0800000000000000
-      internalID: -1672515993479312345
+      spriteID: c00ba47f36241a330800000000000000
+      internalID: 3720327764302802956
       vertices: []
       indices: 
       edges: []
@@ -186,8 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      BexcoStation_0: 8486561651175460363
-      BexcoStation_1: -1672515993479312345
+      Camelia_0: 3720327764302802956
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

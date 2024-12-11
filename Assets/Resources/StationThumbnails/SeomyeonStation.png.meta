@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SeomyeonStation_0: -3376433358778484242
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
