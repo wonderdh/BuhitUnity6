@@ -15,11 +15,29 @@ EditorBuildSettings:
     path: Assets/Scenes/Home.unity
     guid: eba06c8ac140b0b43bbd31752ddc084d
   - enabled: 1
-    path: Assets/Scenes/BusanStation/BusanStationHome.unity
+    path: Assets/Scenes/Stations/BusanStation/BusanStationHome.unity
     guid: d7bc7a63026f0204ca08d8b82b9c33dd
   - enabled: 1
-    path: Assets/Scenes/BusanStation/ChinaTown.unity
+    path: Assets/Scenes/Stations/BusanStation/ChinaTown.unity
     guid: ca05e45f50fb3994dbf87102771fdfdb
+  - enabled: 1
+    path: Assets/Scenes/Stations/SeomyeonStation/SeomyeonUndergroundShoppingDistrict.unity
+    guid: 80290896c3b75394e83e78ed4f8d8bf1
+  - enabled: 1
+    path: Assets/Scenes/Stations/SeomyeonStation/SeomyeonStationHome.unity
+    guid: 7936aa61d1fb4ab48ba39e59a2f98787
+  - enabled: 1
+    path: Assets/Scenes/Stations/HaeundaeStation/HaeundaeStationHome.unity
+    guid: a7389be209d0bde4c9db5772b6d9e945
+  - enabled: 1
+    path: Assets/Scenes/Stations/HaeundaeStation/Haeundae.unity
+    guid: a7e3070ed4d71a8498c6d416b2d45acc
+  - enabled: 1
+    path: Assets/Scenes/Stations/BexcoStation/Bexco.unity
+    guid: aa87e367376a58c4c80e56199bfbf988
+  - enabled: 1
+    path: Assets/Scenes/Stations/BexcoStation/BexcoStationHome.unity
+    guid: 5835f7aa3db3c714cad6d6f57943b1f5
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

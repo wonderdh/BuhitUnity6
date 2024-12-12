@@ -32,8 +32,13 @@ public class LoginManager : MonoBehaviour
 
     public void Awake()
     {
-        //Debug.Log("LoginAwake");
+        Debug.Log("LoginAwake");
 
+
+    }
+
+    private void Start()
+    {
         Panel_SignIn.SetActive(true);
         Panel_SignUp.SetActive(false);
         Panel_SignUp.SetActive(false);
@@ -42,18 +47,14 @@ public class LoginManager : MonoBehaviour
 
         Btn_SignUp.interactable = false;
 
-        //OnChangedState(FirebaseAuthManager.Instance.signedIn);
         IF_SignUp_PwCheck.onValueChanged.AddListener(OnTypingConfirmPassword);
         IF_SignUp_Pw.onValueChanged.AddListener(OnTypingConfirmPassword);
 
         //Firebase ฐüทร
         FirebaseAuthManager.Instance.LoginState += OnChangedState;
         FirebaseAuthManager.Instance.StateAction += TrySignInState;
-    }
 
-    private void Start()
-    {
-        //Debug.Log("Start");
+        Debug.Log("Start");
 
         if(isChecked == false)
         {
@@ -68,7 +69,7 @@ public class LoginManager : MonoBehaviour
 
     private void OnChangedState(bool signedIn)
     {
-        //Debug.Log("OnChangedState : " + signedIn);
+        Debug.Log("OnChangedState : " + signedIn);
 
         if (signedIn)
         {

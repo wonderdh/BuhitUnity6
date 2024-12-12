@@ -7,8 +7,8 @@ using System;
 public class IngameManager : MonoBehaviour
 {
     [Header("StationName")]
-    public String StationName;
-
+    public String stationName;
+    public String mapName;
     // Map
 
     [SerializeField] GameObject background;
@@ -44,36 +44,34 @@ public class IngameManager : MonoBehaviour
 
     async void Awake()
     {
-        ingameObjectList = await FirebaseRDBManager.Instance.GetMapData(StationName, SceneManager.GetActiveScene().name);
-        onDataLoad.Invoke();
+        mapName = SceneManager.GetActiveScene().name;
 
-        foreach (IngameObject ingameObject in ingameObjectList.ingameObjectList)
-        {
-            Debug.Log(ingameObject.id + ingameObject.objectInfo.Description + ingameObject.objectInfo.isChecked);
-        }
+        Debug.Log(stationName+ mapName);
+
+        ingameObjectList = await FirebaseRDBManager.Instance.GetMapData(stationName, mapName);
+        onDataLoad.Invoke();
 
         initBackground();
 
         //initMapInfo();
         initContent();
-
-        ingameUIManager.SetProgressBar();
     }
 
     public void Update()
     {
-        CheckTouch();
-
         if (inGameCamMove.isMoving)
         {
             touchedObject = null;
+            return;
         }
+        CheckTouch();
     }
 
     public void CheckTouch()
     {
+        //Debug.Log("CheckTouch");
         OnTouchStart();
-        //OnTouchEnd();
+        OnTouchEnd();
     }
 
     // 터치 감지
@@ -94,6 +92,8 @@ public class IngameManager : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
+                Debug.Log(hit.transform.name);
+
                 if (!(hit.transform.tag == "HiddenObjects") || inGameCamMove.isMoving)
                 {
                     touchedObject = null;
@@ -121,6 +121,7 @@ public class IngameManager : MonoBehaviour
             {
                 if (hit.transform.gameObject == touchedObject)
                 {
+                    Debug.Log("Same");
                     for (int i = 0; i < hiddenObject.Length; i++)
                     {
                         if (hiddenObject[i] == hit.collider.gameObject)
@@ -133,6 +134,8 @@ public class IngameManager : MonoBehaviour
 
                             // 이미 찾은게 아닐 경우
                             listViewManager.CheckMark(i);
+                            ingameObjectList.ingameObjectList[i].objectInfo.isChecked = 1;
+                            FirebaseRDBManager.Instance.UpdateObject(stationName, mapName, i + 1);
 
                             GameObject findAnim = Instantiate(findAnimPrefab, hiddenObject[i].transform);
 
@@ -150,7 +153,6 @@ public class IngameManager : MonoBehaviour
             }
         }
     }
-    
 
     // 배경 및 리스트 초기화
     private void initBackground()
@@ -159,18 +161,15 @@ public class IngameManager : MonoBehaviour
         {
             background = GameObject.FindGameObjectWithTag("Background");
 
-            contentCount = background.transform.childCount;
 
-            hiddenObject = new GameObject[contentCount];
-
-            for (int i = 0; i < contentCount; i++)
-            {
-                hiddenObject[i] = background.transform.GetChild(i).gameObject;
-            }
         }
-        else
+        contentCount = background.transform.childCount;
+
+        hiddenObject = new GameObject[contentCount];
+
+        for (int i = 0; i < contentCount; i++)
         {
-            contentCount = background.transform.childCount;
+            hiddenObject[i] = background.transform.GetChild(i).gameObject;
         }
 
         //mapInfo = new MapInfo(contentCount);
@@ -212,30 +211,10 @@ public class IngameManager : MonoBehaviour
             audioManager.PlayClear();
         }
     */
-    // 저장 및 맵 관련 기능들
 
-    /*
-    private void initMapInfo()
-    {
-        mapInfo = BuhitDB.Instance.GetMapInfo(contentCount);
-        mapInfo.PrintMapInfo();
-    }
-
-    public void resetMapInfo()
-    {
-        BuhitDB.Instance.ResetMap(contentCount);
-    }
-
-    public MapInfo GetMapInfo()
-    {
-        return mapInfo;
-    }
-
-    */
     public void ClearGame()
     {
-        Debug.Log("ClearGame");
-        //BuhitDB.Instance.OnClearGame();
+        FirebaseRDBManager.Instance.OnClearMap(stationName, mapName);
     }
     
 

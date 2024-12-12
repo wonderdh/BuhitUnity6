@@ -34,6 +34,7 @@ public class HomeManager : MonoBehaviour, IBeginDragHandler, IEndDragHandler
 
     [Header("Panel_StageLock")]
     public GameObject Panel_StageLock;
+    public GameObject Panel_Unlock;
     public GameObject Panel_Unlock_Fail;
     public GameObject Panel_Unlock_Success;
     public Image Image_StageLock_StationSprite;
@@ -60,6 +61,9 @@ public class HomeManager : MonoBehaviour, IBeginDragHandler, IEndDragHandler
     {
         //Panel SetActive init
         Panel_StageLock.SetActive(false);
+        Panel_Unlock.SetActive(false);
+        Panel_Unlock_Fail.SetActive(false);
+        Panel_Unlock_Success.SetActive(false);
 
         await InitData();
 
@@ -239,7 +243,7 @@ public class HomeManager : MonoBehaviour, IBeginDragHandler, IEndDragHandler
             }
             else
             {
-                Debug.Log("Opened");
+                //Debug.Log("Opened");
 
                 MySceneManager.Instance.ChangeScene(clickedBtnName + "Home");
             }
@@ -255,11 +259,13 @@ public class HomeManager : MonoBehaviour, IBeginDragHandler, IEndDragHandler
         Image_StageLock_StationSprite.sprite = BtnStationImageList[targetIndex];
         Image_StageLock_Msg.text = "Unlock\n" + BtnStationList[targetIndex].name + "?";
 
+        Panel_Unlock.SetActive(true);
         Panel_StageLock.SetActive(true);
     }
 
     public void CloseUnlockPanel()
     {
+        Panel_Unlock.SetActive(false);
         Panel_StageLock.SetActive(false);
         Panel_Unlock_Success.SetActive(false);
         Panel_Unlock_Fail.SetActive(false);

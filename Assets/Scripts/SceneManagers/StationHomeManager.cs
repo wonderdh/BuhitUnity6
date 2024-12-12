@@ -10,7 +10,7 @@ public class StationHomeManager : MonoBehaviour
 
     public void OnClickMapBtn(string mapName)
     {
-        Debug.Log("ChangeScene");
+        //Debug.Log("ChangeScene");
         MySceneManager.Instance.ChangeScene(mapName);
     }
 }

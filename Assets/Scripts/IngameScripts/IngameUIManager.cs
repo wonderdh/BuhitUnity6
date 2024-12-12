@@ -29,6 +29,10 @@ public class IngameUIManager : MonoBehaviour
     private void OnDataLoad()
     {
         ingameObjectList = ingameManager.GetObjectList();
+
+        SetProgressBar();
+
+        Debug.Log("OnDataLoad");
     }
 
 
@@ -86,15 +90,16 @@ public class IngameUIManager : MonoBehaviour
     {
         // 새로 빈 mapInfo 생성.
         //MapInfo resetMapInfo = new MapInfo(IngameManager.Instance.GetMapInfo().id.Length);
-
         //BuhitDB.Instance.UpdateMapInfo(resetMapInfo);
+
+        FirebaseRDBManager.Instance.InitData(ingameManager.stationName, ingameManager.mapName, ingameObjectList.ingameObjectList.Count);
         MySceneManager.Instance.ReloadScene();
     }
 
     public void HomeButton()
     {
         //BuhitDB.Instance.UpdateMapInfo(IngameManager.Instance.GetMapInfo());
-        MySceneManager.Instance.ChangeScene("MapSelect");
+        MySceneManager.Instance.ChangeScene("Home");
     }
     
     public void ProgressBarSetActive(bool active)

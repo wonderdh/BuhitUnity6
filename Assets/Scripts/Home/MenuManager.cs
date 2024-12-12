@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
@@ -87,4 +88,5 @@ public class MenuManager : MonoBehaviour
         FirebaseAuthManager.Instance.SignOut();
         MySceneManager.Instance.ChangeScene("Login");
     }
+
 }

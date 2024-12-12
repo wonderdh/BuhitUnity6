@@ -19,7 +19,7 @@ public class FirebaseAuthManager : MonoBehaviour
             return instance;
         }
     }
-    private void Awake()
+    private async void Awake()
     {
         if (instance != null && instance != this)
         {
@@ -28,13 +28,11 @@ public class FirebaseAuthManager : MonoBehaviour
         }
         instance = this;
         DontDestroyOnLoad(gameObject);
-    }
 
-    private async void Start()
-    {
         await InitializeFirebaseAsync();
     }
 
+    public event Action authInitialized;
 
     private FirebaseAuth auth;
     private FirebaseUser user;
@@ -79,6 +77,8 @@ public class FirebaseAuthManager : MonoBehaviour
         {
             Debug.LogError($"Firebase 초기화 실패: {ex.Message}");
         }
+
+        authInitialized?.Invoke();
     }
 
     private void AuthStateChanged(object sender, System.EventArgs eventArgs)
@@ -86,18 +86,18 @@ public class FirebaseAuthManager : MonoBehaviour
         if (!tryLogin) return;
 
         signedIn = user != auth.CurrentUser && auth.CurrentUser != null && auth.CurrentUser.IsValid();
-        //Debug.Log("signedIn = " + signedIn);
+        Debug.LogError("signedIn = " + signedIn);
 
         if (auth.CurrentUser != user)
         {
             if (!signedIn && user != null)
             {
-                Debug.Log("Signed out " + user.UserId);
+                Debug.LogError("Signed out " + user.UserId);
             }
             user = auth.CurrentUser;
             if (signedIn)
             {
-                Debug.Log("Signed in " + user.UserId);
+                Debug.LogError("Signed in " + user.UserId);
             }
         }
 
@@ -143,7 +143,7 @@ public class FirebaseAuthManager : MonoBehaviour
             var result = await auth.CreateUserWithEmailAndPasswordAsync(email, password);
             Debug.LogFormat("회원가입 성공: {0} ({1})", result.User.DisplayName, result.User.UserId);
             // 회원가입 성공 후 추가 처리
-            // FirebaseRDBManager.Instance.OnSignUp(result.User.UserId);
+            FirebaseRDBManager.Instance.OnSignUp(result.User.UserId);
             CurrentState = ENUM_STATE.SIGN_UP;
         }
         catch (FirebaseException e)

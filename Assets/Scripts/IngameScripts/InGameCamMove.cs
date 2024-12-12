@@ -75,7 +75,7 @@ public class InGameCamMove : MonoBehaviour
         } else if (!MySceneManager.Instance.IsPointerOverUIObject())
         {
             isMoveable = true;
-        }
+        }if(Input.GetMouseButtonUp(0)) { isMoving = false; }
     }
 
     private void MoveCam()

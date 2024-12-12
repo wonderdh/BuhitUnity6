@@ -129,7 +129,7 @@ public class MySceneManager : MonoBehaviour
 
             return; 
         }
-        Debug.Log("OnSceneLoaded" + scene.name);
+        //Debug.Log("OnSceneLoaded" + scene.name);
 
         Image_LeftDoor.transform.DOLocalMoveX(-doorPos, 1f);
         Image_RightDoor.transform.DOLocalMoveX(doorPos, 1f).OnComplete(() => {

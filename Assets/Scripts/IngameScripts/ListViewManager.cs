@@ -52,8 +52,6 @@ public class ListViewManager : MonoBehaviour, IBeginDragHandler, IEndDragHandler
     float scroll_pos = 0;
     float[] pos;
 
-    private int listViewCount;                      // 오브젝트 이미지 갯수
-
     private GameObject[] hiddenObjectsListImg;      // listView에 있는 오브젝트 이미지들 가져오기.
 
     [SerializeField ]IngameManager ingameManager;
@@ -85,6 +83,7 @@ public class ListViewManager : MonoBehaviour, IBeginDragHandler, IEndDragHandler
 
         //swipeUpdate();
         HandleScrolling();
+        //ScrollBarValueLerp();
     }
 
     IEnumerator InitMapInfo()
@@ -94,9 +93,9 @@ public class ListViewManager : MonoBehaviour, IBeginDragHandler, IEndDragHandler
             yield return null;
         }
 
-        hiddenObjectsListImg = new GameObject[listViewCount];
+        hiddenObjectsListImg = new GameObject[ingameObjectList.ingameObjectList.Count];
 
-        for (int i = 0; i < listViewCount; i++)
+        for (int i = 0; i < hiddenObjectsListImg.Length; i++)
         {
             hiddenObjectsListImg[i] = listView.transform.GetChild(i).gameObject;
 
@@ -116,29 +115,65 @@ public class ListViewManager : MonoBehaviour, IBeginDragHandler, IEndDragHandler
 
         float padding = listScrollWidth / 2 - listScrollHeight / 2;
 
-        listViewCount = listView.transform.childCount;
-
-        float size = (listViewCount * listScrollHeight) + (padding * 2);
+        float size = (ingameObjectList.ingameObjectList.Count * listScrollHeight) + (padding * 2);
 
         listView.GetComponent<RectTransform>().sizeDelta = new Vector2((int)size, (int)listScrollHeight);
         contentHorizontalLayoutGroup.padding.left = (int)padding;
         contentHorizontalLayoutGroup.padding.right = (int)padding;
 
 
-        pos = new float[listViewCount];
+        pos = new float[ingameObjectList.ingameObjectList.Count];
         float distance = 1f / (pos.Length - 1f);
         for (int i = 0; i < pos.Length; i++)
         {
             pos[i] = distance * i;
         }
 
-        for (int i = 0; i < listViewCount; i++)
+        for (int i = 0; i < ingameObjectList.ingameObjectList.Count; i++)
         {
             int index = i; // 로컬 변수를 사용하여 클로저 문제를 해결합니다.
             listView.transform.GetChild(i).GetComponent<Button>().onClick.AddListener(() => OnElementClick(index));
             listView.transform.GetChild(i).GetComponent<RectTransform>().sizeDelta = new Vector2(listScrollHeight, listScrollHeight);
         }
     }
+    private void ScrollBarValueLerp()
+    {
+        //Debug.Log("ScrollBarValueLerp");
+
+        float flag = (1f / (pos.Length * 2f));
+
+        for (int i = 0; i < pos.Length; i++)
+        {
+            if (scroll_pos < pos[i] + flag && scroll_pos > pos[i] - flag)
+            {
+                scrollbar.value = Mathf.Lerp(scrollbar.value, pos[i], 0.1f);
+            }
+        }
+    }
+
+    /*
+    IEnumerator SCrollBarValueLerpCoroutine()
+    {
+        Debug.Log("ScrollBarValueLerpCoroutine");
+
+        float flag = (1f / (pos.Length * 2f));
+
+        for (int i = 0; i < pos.Length; i++)
+        {
+            if (scroll_pos < pos[i] + flag && scroll_pos > pos[i] - flag)
+            {
+                while (Math.Abs(scrollbar.value - scroll_pos) >= 0.01)
+                {
+                    scrollbar.value = Mathf.Lerp(scrollbar.value, pos[i], 0.1f);
+                    //Debug.Log(scrollbar.value);
+                    yield return null;
+                }
+            }
+        }
+
+        //Debug.Log("Coroutine End");
+    }
+    */
     /*
     // listViewList 스크롤 관련
     private void swipeUpdate()
@@ -164,42 +199,7 @@ public class ListViewManager : MonoBehaviour, IBeginDragHandler, IEndDragHandler
         ListViewScaleLerp();
     }
 
-    private void ScrollBarValueLerp()
-    {
-        //Debug.Log("ScrollBarValueLerp");
 
-        float flag = (1f / (pos.Length * 2f));
-
-        for (int i = 0; i < pos.Length; i++)
-        {
-            if (scroll_pos < pos[i] + flag && scroll_pos > pos[i] - flag)
-            {
-                scrollbar.value = Mathf.Lerp(scrollbar.value, pos[i], 0.1f);
-            }
-        }
-    }
-
-    IEnumerator SCrollBarValueLerpCoroutine()
-    {
-        Debug.Log("ScrollBarValueLerpCoroutine");
-
-        float flag = (1f / (pos.Length * 2f));
-
-        for (int i = 0; i < pos.Length; i++)
-        {
-            if (scroll_pos < pos[i] + flag && scroll_pos > pos[i] - flag)
-            {
-                while(Math.Abs(scrollbar.value - scroll_pos) >= 0.01)
-                {
-                    scrollbar.value = Mathf.Lerp(scrollbar.value, pos[i], 0.1f);
-                    Debug.Log(scrollbar.value);
-                    yield return null;
-                }
-            }
-        }
-
-        //Debug.Log("Coroutine End");
-    }
 
     private void ListViewScaleLerp()
     {
@@ -233,7 +233,7 @@ public class ListViewManager : MonoBehaviour, IBeginDragHandler, IEndDragHandler
     */
     void UpdateDescription(int i)
     {
-        if (i >= 0 && i < listViewCount)
+        if (i >= 0 && i < ingameObjectList.ingameObjectList.Count)
         {
             descriptionText.text = ingameObjectList.ingameObjectList[i].objectInfo.Description;
         }
@@ -241,6 +241,7 @@ public class ListViewManager : MonoBehaviour, IBeginDragHandler, IEndDragHandler
 
     public void CheckMark(int i)
     {
+        Debug.Log("CheckMark" + i);
         Image img = hiddenObjectsListImg[i].GetComponent<Image>();
         img.color = new Color(img.color.r, img.color.g, img.color.b, 0.5f);
 
